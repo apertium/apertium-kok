@@ -1,0 +1,8 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+srcdir=@datarootdir@/apertium/apertium-kok
+
+Name: apertium-kok
+Description: Finite-state morphological transducer and constraint grammar for Kongo 
+Version: @VERSION@
+
