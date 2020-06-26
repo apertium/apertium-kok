@@ -1,6 +1,6 @@
 Konkani
 
-                            apertium-kon
+                            apertium-kok
 ===============================================================================
 
 This is an Apertium monolingual language package for Konkani. What
@@ -49,16 +49,16 @@ Testing
 If you are in the source directory after running make, the following
 command should work:
 
-$  echo "TODO: test sentence" | apertium -d . kon-morph
+$  echo "TODO: test sentence" | apertium -d . kok-morph
 TODO: test analysis result
 
 Files and data
 ===============================================================================
 
-* apertium-kon.kon.dix            - Monolingual dictionary
-* kon.prob                        - Tagger model
-* apertium-kon.kon.rlx            - Constraint Grammar disambiguation rules
-* apertium-kon.post-kon.dix       - Post-generator
+* apertium-kok.kok.dix            - Monolingual dictionary
+* kok.prob                        - Tagger model
+* apertium-kok.kok.rlx            - Constraint Grammar disambiguation rules
+* apertium-kok.post-kok.dix       - Post-generator
 * modes.xml                       - Translation modes
 
 
@@ -66,7 +66,6 @@ For more information
 ===============================================================================
 
 * http://wiki.apertium.org/wiki/Installation
-* http://wiki.apertium.org/wiki/apertium-eng
 * http://wiki.apertium.org/wiki/Using_an_lttoolbox_dictionary
 
 Help and support
