@@ -6,10 +6,8 @@
 ^भियेलो/भिये<vblex><sg><m><p1><p2><p3><past><pret><idct>$ 
 ^ना/ना<adv>/ना<cnjcoo>/ना<cnjsub>/ना<vblex>/न<n><sg><oc><cmsg>/न<n><pl><dc><nom>/न<n><pl><oc><cmpl>/ना<n><sg><dc><nom>/ना<n><sg><oc><cmsg>/ना<n><pl><dc><nom>$ 
 ^।/।<sent>$
-^बंगाल/बंगाल<n><sg><dc><nom>/बंगाल<n><pl><dc><nom>$ 
-^तर/तर<ninf>/तर<cnjcoo>/तर<cnjsub>/तर<cnjquot>$ 
-^पेटलेंच/पेट<vblex><sg><nt><p1><p2><p3><past><pret><idct><ecl>$ 
-^।/।<sent>$
+^हय/हय<n><sg><dc><nom>/हय<n><sg><oc><cmsg>/हय<n><pl><dc><nom>$ 
+^./.<sent>$
 ^फुलां/फु<vblex><sg><nt><p3><pres><perf><idct>/फु<vblex><sg><m><nt><p1><p2><pres><perf><idct>$ 
 ^घालून/घाल<vblex>$ 
 ^पुजा/पुज<vblex>/पुज<n><pl><dc><nom>/पुजा<n><sg><dc><nom>$ 
@@ -302,4 +300,8 @@
 ^परिक्षा/परिक्ष<n><pl><dc><nom>/परिक्षा<n><sg><dc><nom>$ 
 ^पास/पास<adj>/पास<vblex>/पास<n><sg><dc><nom>/पास<n><pl><dc><nom>$ 
 ^केली/केली<cnjsub>/के<vblex><sg><f><p2><p3><past><pret><idct>$ 
+^।/।<sent>$
+^बंगाल/बंगाल<n><sg><dc><nom>/बंगाल<n><pl><dc><nom>$ 
+^तर/तर<ninf>/तर<cnjcoo>/तर<cnjsub>/तर<cnjquot>$ 
+^पेटलेंच/पेट<vblex><sg><nt><p1><p2><p3><past><pret><idct><ecl>$ 
 ^।/।<sent>$
