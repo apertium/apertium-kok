@@ -27,7 +27,7 @@ LIST ObliqueNoun = (n obl);
 SECTION
 
 
-SELECT Conj IF (0 Prn) (0 Conj) (1 Vblex) ;
+SELECT Prn IF (0 Prn) (0 Conj) (1 Vblex) ;
 
 SELECT Vblex IF (0 Vblex) (0 N) (-1 N) ;
 
