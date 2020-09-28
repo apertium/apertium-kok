@@ -1,20 +1,55 @@
-# Firstly, we need to define what tags should be considered sentence delimiters. For this example, only full stop is set as delimiter.
-DELIMITERS = "<.>" ;
+DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>" ;
+SOFT-DELIMITERS = "<,>" ;
 
-# We can define sets for common tag clusters
-LIST Case = (n s) (n p) ; # A set that matches either a Noun Singular or a Noun Plural
+SETS
+
+LIST N = n ; 
+LIST Obl = obl ; 
+LIST Post = post ; 
+LIST Adj = adj;
+LIST Adv = adv;
+LIST Verb = vblex;
+LIST Stem = stem ; 
+LIST Vaux = vaux ; 
+LIST Vblex = vblex ; 
+LIST Vbser = vbser ;
+LIST Det = det ;
+LIST Conj = cnjcoo;
+LIST ConjAdv = cnjadv;
+LIST Prn = prn;
+LIST MaleAdjective = (adj m);
+LIST FemaleAdjective = (adj f);
+LIST MaleNoun = (n m);
+LIST FemaleNoun = (n f);
+LIST NominativeNoun = (n nom);
+LIST ObliqueNoun = (n obl);
+
 
 SECTION
-# If there is a singular noun to the right, I cannot be a verb or noun.
-REMOVE (n) OR (v) IF (1 (n s)) ;
 
-# If there is a conjunction followed by a certain cohort of the same CASE as me, choose me.
-SELECT $$Case IF (1 (cnjcoo) LINK 1C $$Case) ;
+SELECT Prn IF
+    (0 Prn)
+    (0 Conj)
+    (1 Verb);
 
-# Resources:
-# http://visl.sdu.dk/cg3.html
-# http://groups.google.com/group/constraint-grammar
-# http://kevindonnelly.org.uk/2010/05/constraint-grammar-tutorial/
-# http://wiki.apertium.org/wiki/Constraint_Grammar
-# http://wiki.apertium.org/wiki/Apertium_and_Constraint_Grammar
+SELECT Verb IF
+    (0 Verb)
+    (0 N)
+    (-1 N);
 
+SELECT Verb IF
+    (0 Verb)
+    (0 N)
+    (-1 Verb);
+
+SELECT Adv IF
+    (0 Adv)
+    (0 N)
+	(-1 Prn)
+    (1 N);
+
+SELECT Adv IF
+    (0 Adv)
+    (0 N)
+	(-1 N)
+    (1 Verb);
