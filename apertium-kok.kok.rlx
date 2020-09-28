@@ -8,7 +8,6 @@ LIST Obl = obl ;
 LIST Post = post ; 
 LIST Adj = adj;
 LIST Adv = adv;
-LIST Verb = vblex;
 LIST Stem = stem ; 
 LIST Vaux = vaux ; 
 LIST Vblex = vblex ; 
@@ -27,12 +26,13 @@ LIST ObliqueNoun = (n obl);
 
 SECTION
 
-SELECT Prn IF (0 Prn) (0 Conj) (1 Verb) ;
 
-SELECT Verb IF (0 Verb) (0 N) (-1 N) ;
+SELECT Conj IF (0 Prn) (0 Conj) (1 Vblex) ;
 
-SELECT Verb IF (0 Verb) (0 N) (-1 Verb) ;
+SELECT Vblex IF (0 Vblex) (0 N) (-1 N) ;
+
+SELECT Vblex IF (0 Vblex) (0 N) (-1 Vblex) ;
 
 SELECT Adv IF (0 Adv) (0 N) (-1 Prn) (1 N) ;
 
-SELECT Adv IF (0 Adv) (0 N) (-1 N) (1 Verb) ;
+SELECT Adv IF (0 Adv) (0 N) (-1 N) (1 Vblex) ;
