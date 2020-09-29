@@ -8,6 +8,7 @@ LIST Obl = obl ;
 LIST Post = post ; 
 LIST Adj = adj;
 LIST Adv = adv;
+LIST Vblex = vblex;
 LIST Stem = stem ; 
 LIST Vaux = vaux ; 
 LIST Vblex = vblex ; 
@@ -15,6 +16,7 @@ LIST Vbser = vbser ;
 LIST Det = det ;
 LIST Conj = cnjcoo;
 LIST ConjAdv = cnjadv;
+LIST Cnjsub = cnjsub;
 LIST Prn = prn;
 LIST MaleAdjective = (adj m);
 LIST FemaleAdjective = (adj f);
@@ -26,13 +28,15 @@ LIST ObliqueNoun = (n obl);
 
 SECTION
 
+# Pronoun
+SELECT Prn IF (0 Prn) (0 Conj) (1 Vblex OR Adj) ;
 
-SELECT Prn IF (0 Prn) (0 Conj) (1 Vblex) ;
-
+# Verb
 SELECT Vblex IF (0 Vblex) (0 N) (-1 N) ;
-
+SELECT Vblex IF (0 Vblex) (0 Adj) (0 Cnjsub) (0 N) (-1 N) ;
 SELECT Vblex IF (0 Vblex) (0 N) (-1 Vblex) ;
+SELECT Vblex IF (0 Vblex) (0 Conj) (-1 Adj) ;
 
-SELECT Adv IF (0 Adv) (0 N) (-1 Prn) (1 N) ;
-
-SELECT Adv IF (0 Adv) (0 N) (-1 N) (1 Vblex) ;
+# Adverb
+SELECT Adv IF (0 Adv) (0 N OR Cnjsub) (-1 Prn) (1 N) ;
+SELECT Adv IF (0 Adv) (0 N) (1 Vblex) ;
