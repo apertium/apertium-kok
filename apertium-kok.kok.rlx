@@ -18,15 +18,14 @@ LIST Conj = cnjcoo;
 LIST ConjAdv = cnjadv;
 LIST Cnjsub = cnjsub;
 LIST Prn = prn;
-LIST MaleAdjective = (adj m);
-LIST FemaleAdjective = (adj f);
-LIST MaleNoun = (n m);
-LIST FemaleNoun = (n f);
-LIST NominativeNoun = (n nom);
-LIST ObliqueNoun = (n obl);
+LIST N_Sg = (n sg);
+LIST N_Pl = (n pl);
 
 
 SECTION
+
+# Noun
+SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Vblex) (1 N_Sg) (1 N_Pl);
 
 # Pronoun
 SELECT Prn IF (0 Prn) (0 Conj) (1 Vblex OR Adj) ;
