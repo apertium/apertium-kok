@@ -5,11 +5,8 @@ SETS
 
 LIST N = n ; 
 LIST Adj = adj;
-LIST Adv = adv;
-LIST Vblex = vblex; 
-LIST Vaux = vaux ; 
+LIST Adv = adv; 
 LIST Vblex = vblex ; 
-LIST Vbser = vbser ;
 LIST CnjCoo = cnjcoo;
 LIST CnjAdv = cnjadv;
 LIST CnjSub = cnjsub;
@@ -17,11 +14,16 @@ LIST CnjQuot = cnjquot;
 LIST Prn = prn;
 LIST N_Sg = (n sg);
 LIST N_Pl = (n pl);
+LIST Adj_Sg = (adj sg);
+LIST Vblex_Sg = (vblex sg);
+LIST Vblex_Pl = (vblex pl);
 
 
 SECTION
 
 # Noun
+SELECT N IF (0 N) (0 Adj) (-1 Adv) (-1 CnjCoo) (1 N) ;
+SELECT N IF (0 N) (0 Adj) (-1 Adv) (1 N) ;
 
 # Pronoun
 SELECT Prn IF (0 Prn) (0 CnjCoo OR CnjSub) (1 Vblex OR Adj) ;
@@ -42,13 +44,11 @@ SELECT Adv IF (0 Adv) (0 CnjCoo) (-1 CnjSub) (-1 CnjQuot) (1 Adj) (1 N) ;
 SELECT Adj IF (0 N) (0 Adj) (-1 N) (1 N) ;
 
 # Conjunction
-SELECT CnjSub IF (0 CnjSub) (0 CnjQuot) (1 Adv) (1 CnjCoo) ;
+SELECT CnjSub IF (0 CnjSub) (0 CnjQuot) (1 Adv);
 
-# Noun Singular
-SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Vblex OR Adj) (1 N_Sg) (1 N_Pl) ;
-SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (-1 Adj) (-1 N) (1 Vblex) ;
-SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Adv) ;
-
-# Noun Plural
-SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (0 Adj) (-1 Adv) (-1 CnjCoo) (1 N_Sg) (1 N_Pl) ;
-SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (-1 Adj) (-1 N_Pl) (1 CnjCoo) (1 CnjSub) (1 Vblex) ;
+# Noun followed by 2nd grammar type
+SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Adj_Sg) ;
+SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (-1 Adj_Sg) ;
+SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Vblex_Sg) ;
+SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (2 Vblex_Pl) ;
+SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (1 Vblex_Pl) ;
