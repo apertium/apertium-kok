@@ -24,9 +24,11 @@ SECTION
 # Noun
 SELECT N IF (0 N) (0 Adj) (-1 Adv) (-1 CnjCoo) (1 N) ;
 SELECT N IF (0 N) (0 Adj) (-1 Adv) (1 N) ;
+SELECT N IF (0 Adj OR CnjSub) (0 Prn) (0 N) (-1 Prn) ;
 
 # Pronoun
 SELECT Prn IF (0 Prn) (0 CnjCoo OR CnjSub) (1 Vblex OR Adj) ;
+SELECT Prn IF (0 Prn) (0 CnjSub) (0 Vblex) (1 N) ;
 
 # Verb
 SELECT Vblex IF (0 Vblex) (0 N) (-1 N) ;
