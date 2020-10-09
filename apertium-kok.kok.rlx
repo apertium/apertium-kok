@@ -15,6 +15,7 @@ LIST Prn = prn;
 LIST N_Sg = (n sg);
 LIST N_Pl = (n pl);
 LIST Adj_Sg = (adj sg);
+LIST Adj_Pl = (adj pl);
 LIST Vblex_Sg = (vblex sg);
 LIST Vblex_Pl = (vblex pl);
 
@@ -27,10 +28,10 @@ SELECT N IF (0 N) (0 Adj) (-1 Adv) (1 N) ;
 SELECT N IF (0 Adj OR CnjSub) (0 Prn) (0 N) (-1 Prn) ;
 
 # Pronoun
-SELECT Prn IF (0 Prn) (0 CnjCoo OR CnjSub) (1 Vblex OR Adj) ;
+SELECT Prn IF (0 Prn) (0 CnjCoo OR CnjSub) (1 Vblex OR Adj OR N) ;
 SELECT Prn IF (0 Prn) (0 CnjSub) (0 Vblex) (1 N) ;
 SELECT Prn IF (0 Prn) (0 CnjSub) (1 Adv) (2 Vblex) ;
-SELECT Prn IF (0 Prn) (0 CnjSub) (0 Vblex) (1 Adv) (1 CnjSub) (2 Vblex);
+SELECT Prn IF (0 Prn) (0 CnjSub) (0 Vblex) (1 Adv) (1 CnjSub) (2 Vblex) ;
 
 # Verb
 SELECT Vblex IF (0 Vblex) (0 N) (-1 N) ;
@@ -50,7 +51,7 @@ SELECT Adv IF (0 Adv) (0 CnjCoo) (-1 CnjSub) (-1 CnjQuot) (1 Adj) (1 N) ;
 SELECT Adj IF (0 N) (0 Adj) (-1 N) (1 N) ;
 
 # Conjunction
-SELECT CnjSub IF (0 CnjSub) (0 CnjQuot) (1 Adv);
+SELECT CnjSub IF (0 CnjSub) (0 CnjQuot) (1 Adv) ;
 
 # Noun followed by 2nd grammar type
 SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Adj_Sg) ;
@@ -58,3 +59,6 @@ SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (-1 Adj_Sg) ;
 SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Vblex_Sg) ;
 SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (2 Vblex_Pl) ;
 SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (1 Vblex_Pl) ;
+
+# Verb followed by 2nd grammar type
+SELECT Vblex_Sg IF (0 Vblex_Sg) (0 Vblex_Pl) (-1 N_Sg) ;
