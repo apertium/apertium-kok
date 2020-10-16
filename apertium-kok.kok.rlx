@@ -12,12 +12,12 @@ LIST CnjAdv = cnjadv;
 LIST CnjSub = cnjsub;
 LIST CnjQuot = cnjquot;
 LIST Prn = prn;
-LIST N_Sg = (n sg);
-LIST N_Pl = (n pl);
-LIST Adj_Sg = (adj sg);
-LIST Adj_Pl = (adj pl);
-LIST Vblex_Sg = (vblex sg);
-LIST Vblex_Pl = (vblex pl);
+#LIST N_Sg = (n sg);
+#LIST N_Pl = (n pl);
+#LIST Adj_Sg = (adj sg);
+#LIST Adj_Pl = (adj pl);
+#LIST Vblex_Sg = (vblex sg);
+#LIST Vblex_Pl = (vblex pl);
 
 
 SECTION
@@ -54,11 +54,11 @@ SELECT Adj IF (0 N) (0 Adj) (-1 N) (1 N) ;
 SELECT CnjSub IF (0 CnjSub) (0 CnjQuot) (1 Adv) ;
 
 # Noun followed by 2nd grammar type
-SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Adj_Sg) ;
-SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (-1 Adj_Sg) ;
-SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Vblex_Sg) ;
-SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (2 Vblex_Pl) ;
-SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (1 Vblex_Pl) ;
+#SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Adj_Sg) ;
+#SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (-1 Adj_Sg) ;
+#SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Vblex_Sg) ;
+#SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (2 Vblex_Pl) ;
+#SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (1 Vblex_Pl) ;
 
 # Verb followed by 2nd grammar type
-SELECT Vblex_Sg IF (0 Vblex_Sg) (0 Vblex_Pl) (-1 N_Sg) ;
+#SELECT Vblex_Sg IF (0 Vblex_Sg) (0 Vblex_Pl) (-1 N_Sg) ; 
