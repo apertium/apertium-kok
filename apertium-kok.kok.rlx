@@ -23,6 +23,7 @@ LIST Prn = prn;
 SECTION
 
 # Noun
+SELECT N IF (0 N) (0 Vblex) (1 Adj) ;
 SELECT N IF (0 N) (0 Adj) (-1 Adv) (-1 CnjCoo) (1 N) ;
 SELECT N IF (0 N) (0 Adj) (-1 Adv) (1 N) ;
 SELECT N IF (0 Adj OR CnjSub) (0 Prn) (0 N) (-1 Prn) ;
@@ -44,6 +45,7 @@ SELECT Vblex IF (0 Adj) (0 CnjSub) (0 Vblex) (0 N) (-1 Adv) (-2 Prn) ;
 # Adverb
 SELECT Adv IF (0 Adv) (0 N OR CnjSub) (-1 Prn) (1 N) ;
 SELECT Adv IF (0 Adv) (0 N) (1 Vblex) ;
+SELECT Adv IF (0 Adv) (0 CnjCoo) (-1 CnjSub) (1 N) ;
 SELECT Adv IF (0 Adv) (0 CnjSub) (-1 Prn) (1 Vblex) ;
 SELECT Adv IF (0 Adv) (0 CnjCoo) (-1 CnjSub) (-1 CnjQuot) (1 Adj) (1 N) ;
 
