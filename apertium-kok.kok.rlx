@@ -24,6 +24,7 @@ SECTION
 
 # Noun
 SELECT N IF (0 N) (0 Vblex) (1 Adj) ;
+SELECT N IF (0 N) (0 Vblex) (-1 Prn) ;
 SELECT N IF (0 N) (0 Adj) (-1 Adv) (-1 CnjCoo) (1 N) ;
 SELECT N IF (0 N) (0 Adj) (-1 Adv) (1 N) ;
 SELECT N IF (0 Adj OR CnjSub) (0 Prn) (0 N) (-1 Prn) ;
@@ -31,6 +32,7 @@ SELECT N IF (0 Adj OR CnjSub) (0 Prn) (0 N) (-1 Prn) ;
 # Pronoun
 SELECT Prn IF (0 Prn) (0 CnjCoo OR CnjSub) (1 Vblex OR Adj OR N) ;
 SELECT Prn IF (0 Prn) (0 CnjSub) (0 Vblex) (1 N) ;
+SELECT Prn IF (0 Prn) (0 N OR Adj) (1 N) ;
 SELECT Prn IF (0 Prn) (0 CnjSub) (1 Adv) (2 Vblex) ;
 SELECT Prn IF (0 Prn) (0 CnjSub) (0 Vblex) (1 Adv) (1 CnjSub) (2 Vblex) ;
 
@@ -40,9 +42,11 @@ SELECT Vblex IF (0 Vblex) (0 Adj) (0 CnjSub) (0 N) (-1 N) ;
 SELECT Vblex IF (0 Vblex) (0 N) (-1 Vblex) ;
 SELECT Vblex IF (0 Vblex) (0 CnjCoo) (-1 Adj) ;
 SELECT Vblex IF (0 Vblex) (0 CnjCoo) (0 CnjSub) (-1 N) ;
+SELECT Vblex IF (0 Vblex) (0 Adj OR N OR CnjCoo) (-1 Adv) ;
 SELECT Vblex IF (0 Adj) (0 CnjSub) (0 Vblex) (0 N) (-1 Adv) (-2 Prn) ;
 
 # Adverb
+SELECT Adv IF (0 Adv) (0 CnjSub) (-1 N) (1 Vblex) ;
 SELECT Adv IF (0 Adv) (0 N OR CnjSub) (-1 Prn) (1 N) ;
 SELECT Adv IF (0 Adv) (0 N) (1 Vblex) ;
 SELECT Adv IF (0 Adv) (0 CnjCoo) (-1 CnjSub) (1 N) ;
@@ -50,6 +54,7 @@ SELECT Adv IF (0 Adv) (0 CnjSub) (-1 Prn) (1 Vblex) ;
 SELECT Adv IF (0 Adv) (0 CnjCoo) (-1 CnjSub) (-1 CnjQuot) (1 Adj) (1 N) ;
 
 # Adjective
+SELECT Adj IF (0 N) (0 Adj) (1 Vblex) ;
 SELECT Adj IF (0 N) (0 Adj) (-1 N) (1 N) ;
 
 # Conjunction
