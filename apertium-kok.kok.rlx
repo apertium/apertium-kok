@@ -12,6 +12,8 @@ LIST CnjAdv = cnjadv;
 LIST CnjSub = cnjsub;
 LIST CnjQuot = cnjquot;
 LIST Prn = prn;
+LIST Post = post;
+LIST Sent = sent;
 #LIST N_Sg = (n sg);
 #LIST N_Pl = (n pl);
 #LIST Adj_Sg = (adj sg);
@@ -24,10 +26,9 @@ SECTION
 
 # Noun
 SELECT N IF (0 N) (0 Vblex) (1 Adj) ;
-SELECT N IF (0 N) (0 Vblex) (-1 Prn) ;
+SELECT N IF (0 N) (0 Vblex OR Adj OR CnjSub OR CnjCoo) (-1 Prn) ;
 SELECT N IF (0 N) (0 Adj) (-1 Adv) (-1 CnjCoo) (1 N) ;
 SELECT N IF (0 N) (0 Adj) (-1 Adv) (1 N) ;
-SELECT N IF (0 Adj OR CnjSub) (0 Prn) (0 N) (-1 Prn) ;
 
 # Pronoun
 SELECT Prn IF (0 Prn) (0 CnjCoo OR CnjSub) (1 Vblex OR Adj OR N) ;
@@ -43,19 +44,25 @@ SELECT Vblex IF (0 Vblex) (0 N) (-1 Vblex) ;
 SELECT Vblex IF (0 Vblex) (0 CnjCoo) (-1 Adj) ;
 SELECT Vblex IF (0 Vblex) (0 CnjCoo) (0 CnjSub) (-1 N) ;
 SELECT Vblex IF (0 Vblex) (0 Adj OR N OR CnjCoo) (-1 Adv) ;
+SELECT Vblex IF (0 Vblex) (0 CnjCoo) (0 CnjSub) (-1 Vblex) (-2 N) ;
 SELECT Vblex IF (0 Adj) (0 CnjSub) (0 Vblex) (0 N) (-1 Adv) (-2 Prn) ;
 
 # Adverb
+SELECT Adv IF (0 Adv) (0 CnjSub) (1 Sent) ;
 SELECT Adv IF (0 Adv) (0 CnjSub) (-1 N) (1 Vblex) ;
+SELECT Adv IF (0 Adj OR Post) (0 Adv) (-1 N OR Prn) (1 N OR Prn) ;
 SELECT Adv IF (0 Adv) (0 N OR CnjSub) (-1 Prn) (1 N) ;
 SELECT Adv IF (0 Adv) (0 N) (1 Vblex) ;
 SELECT Adv IF (0 Adv) (0 CnjCoo) (-1 CnjSub) (1 N) ;
 SELECT Adv IF (0 Adv) (0 CnjSub) (-1 Prn) (1 Vblex) ;
 SELECT Adv IF (0 Adv) (0 CnjCoo) (-1 CnjSub) (-1 CnjQuot) (1 Adj) (1 N) ;
+SELECT Adv IF (0 Adv) (0 N OR CnjSub OR CnjCoo OR Post) (1 N) (2 Vblex) ;
 
 # Adjective
 SELECT Adj IF (0 N) (0 Adj) (1 Vblex) ;
 SELECT Adj IF (0 N) (0 Adj) (-1 N) (1 N) ;
+SELECT Adj IF (0 Adj) (0 Adv) (-1 Prn) (1 Adv OR Vblex) ;
+SELECT Adj IF (0 N OR Adv OR CnjCoo OR CnjSub) (0 Adj) (-1 N) (1 Adj) ;
 
 # Conjunction
 SELECT CnjSub IF (0 CnjSub) (0 CnjQuot) (1 Adv) ;
