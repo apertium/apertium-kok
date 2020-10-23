@@ -13,6 +13,7 @@ LIST CnjSub = cnjsub;
 LIST CnjQuot = cnjquot;
 LIST Prn = prn;
 LIST Post = post;
+LIST Ninf = ninf;
 LIST Sent = sent;
 #LIST N_Sg = (n sg);
 #LIST N_Pl = (n pl);
@@ -66,6 +67,8 @@ SELECT Adj IF (0 N OR Adv OR CnjCoo OR CnjSub) (0 Adj) (-1 N) (1 Adj) ;
 
 # Conjunction
 SELECT CnjSub IF (0 CnjSub) (0 CnjQuot) (1 Adv) ;
+SELECT CnjCoo IF (0 CnjCoo) (0 CnjSub) (0 Vblex) (1 Sent) ;
+SELECT CnjCoo IF (0 CnjCoo) (0 CnjSub) (1 Prn OR N) (-1 Prn OR N) ;
 
 # Noun followed by 2nd grammar type
 #SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Adj_Sg) ;
