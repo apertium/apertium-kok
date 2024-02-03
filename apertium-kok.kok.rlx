@@ -18,12 +18,12 @@ LIST Sent = sent;
 LIST N_M = (n m) ;
 LIST N_F = (n f) ;
 LIST Im_Id = (imperf idct);
-#LIST N_Sg = (n sg);
-#LIST N_Pl = (n pl);
-#LIST Adj_Sg = (adj sg);
-#LIST Adj_Pl = (adj pl);
-#LIST Vblex_Sg = (vblex sg);
-#LIST Vblex_Pl = (vblex pl);
+LIST N_Sg = (n sg);
+LIST N_Pl = (n pl);
+LIST Adj_Sg = (adj sg);
+LIST Adj_Pl = (adj pl);
+LIST Vblex_Sg = (vblex sg);
+LIST Vblex_Pl = (vblex pl);
 LIST Vblex_F = (vblex f);
 LIST Vblex_M = (vblex m);
 LIST Vbx_F_Im_id = (vblex f imperf idct);
@@ -78,14 +78,14 @@ SELECT CnjCoo IF (0 CnjCoo) (0 CnjSub) (1 Prn OR N) (-1 Prn OR N) ;
 SELECT CnjCoo IF (0 CnjCoo) (0 N) (-1 N) ; # --
 
 # Noun followed by 2nd grammar type
-#SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Adj_Sg) ;
-#SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (-1 Adj_Sg) ;
-#SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Vblex_Sg) ;
-#SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (2 Vblex_Pl) ;
-#SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (1 Vblex_Pl) ;
+SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Adj_Sg) ;
+SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (-1 Adj_Sg) ;
+SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Vblex_Sg) ;
+SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (2 Vblex_Pl) ;
+SELECT N_Pl IF (0 N_Sg) (0 N_Pl) (1 Vblex_Pl) ;
 
 # Verb followed by 2nd grammar type
-#SELECT Vblex_Sg IF (0 Vblex_Sg) (0 Vblex_Pl) (-1 N_Sg) ; 
+SELECT Vblex_Sg IF (0 Vblex_Sg) (0 Vblex_Pl) (-1 N_Sg) ; 
 SELECT Vblex_F IF (0 Vbx_F_Im_id) (1 N_F) ;
 SELECT Vblex_F IF (0 Vblex_F) (-1 N_F) ;
 SELECT Vblex_M IF (0 Vblex_M) (-1 N_M) ;
