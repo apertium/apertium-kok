@@ -75,7 +75,7 @@ SELECT Adj IF (0 N OR Adv OR CnjCoo OR CnjSub) (0 Adj) (-1 N) (1 Adj) ;
 SELECT CnjSub IF (0 CnjSub) (0 CnjQuot) (1 Adv) ;
 SELECT CnjCoo IF (0 CnjCoo) (0 CnjSub) (0 Vblex) (1 Sent) ;
 SELECT CnjCoo IF (0 CnjCoo) (0 CnjSub) (1 Prn OR N) (-1 Prn OR N) ;
-SELECT CnjCoo IF (0 CnjCoo) (0 N) (-1 N) ; # --
+SELECT CnjCoo IF (0 CnjCoo) (0 N) (-1 N) ;
 
 # Noun followed by 2nd grammar type
 SELECT N_Sg IF (0 N_Sg) (0 N_Pl) (1 Adj_Sg) ;
